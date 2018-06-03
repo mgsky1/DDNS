@@ -25,8 +25,3 @@ def getRealIp(url):
     for i in range(1,5):
         ip_addr += matchs.group(i) + "."
     return ip_addr[:-1]
-
-if __name__ == "__main__":
-    url = getIpPage();
-    ip = getRealIp(url)
-    print(ip)
