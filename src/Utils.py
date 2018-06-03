@@ -59,5 +59,3 @@ class Utils:
         except subprocess.CalledProcessError:
             print("网络未连通！请检查网络")
             return False
-if __name__ == "__main__":
-    print(Utils.isOnline())
