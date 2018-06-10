@@ -1,4 +1,4 @@
-# DDNS_DEV
+# DDNS
 
 ## Summary
 
@@ -12,6 +12,16 @@
 > * 此脚本为DDNS实现的个人想法
 ## Restrict
 > 本脚本适用于家庭宽带IP为动态IP的情形，若不是，可以利用[frp](https://github.com/fatedier/frp)等NAT-DDNS内网穿透工具
+## Configuration
+本项目修改为使用配置文件方式存储用户配置，配置文件为JSON格式，形式如下：
+```
+{
+    "AccessKeyId": "Your_AccessKeyId",//你的阿里云AccessKeyId
+    "AccessKeySecret": "Your_AccessKeySecret",//你的阿里云AccessKeySecret
+    "First-level-domain": "Your_First-level-domain",//一级域名，例如 example.com
+    "Second-level-domain": "Your_Second-level-domain"//二级域名，例如 ddns.example.com 填入ddns即可
+}
+```
 ## Tip
 > 判断自家宽带是否是动态IP的方式：
 > * Step 1：百度搜索IP，查到自己的IP地址

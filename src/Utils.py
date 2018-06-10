@@ -5,13 +5,14 @@ Created By Martin Huang on 2018/5/19
 2018/5/16 =》删除不需要的方法
 2018/5/29 =》增加获取操作系统平台方法，增加网络连通性检测(后续考虑重构)
 2018/6/3 =》网络连通性代码重构
+2018/6/10 =》增加配置文件读取方法(可能有IO性能影响，考虑重构)
 '''
 import IpGetter
-import json
 import platform
 import  subprocess
-from CommonRequestSingleton import CommonRequestSing
+import json
 from AcsClientSingleton import AcsClientSing
+from CommonRequestSingleton import CommonRequestSing
 class Utils:
 
     #获取真实公网IP
@@ -27,7 +28,7 @@ class Utils:
         request.set_domain('alidns.aliyuncs.com')
         request.set_version('2015-01-09')
         request.set_action_name('DescribeDomainRecords')
-        request.add_query_param('DomainName', 'example.com')
+        request.add_query_param('DomainName', Utils.getConfigJson().get('First-level-domain'))
         response = client.do_action_with_exception(request)
         jsonObj = json.loads(response.decode("UTF-8"))
         records = jsonObj["DomainRecords"]["Record"]
@@ -59,5 +60,9 @@ class Utils:
         except subprocess.CalledProcessError:
             print("网络未连通！请检查网络")
             return False
-if __name__ == "__main__":
-    print(Utils.isOnline())
+
+    #从config.json中获取配置信息JSON串
+    def getConfigJson():
+        with open('config.json') as file:
+            jsonStr = json.loads(file.read())
+        return jsonStr
