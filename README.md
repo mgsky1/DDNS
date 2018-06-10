@@ -11,7 +11,7 @@
 ## Restrict
 > 本脚本适用于家庭宽带IP为动态IP的情形，若不是，可以利用[frp](https://github.com/fatedier/frp)等NAT-DDNS内网穿透工具
 ## Configuration
-本项目修改为使用配置文件方式存储用户配置，配置文件为JSON格式，形式如下：
+本项目修改为使用配置文件方式存储用户配置，配置文件为JSON格式，存放于config.json文件中，形式如下：
 ```
 {
     "AccessKeyId": "Your_AccessKeyId",//你的阿里云AccessKeyId

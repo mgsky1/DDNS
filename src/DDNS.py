@@ -14,7 +14,7 @@ import time
 
 def DDNS():
     client = Utils.getAcsClient()
-    recordId = Utils.getRecordId('ddns')
+    recordId = Utils.getRecordId(Utils.getConfigJson().get('Second-level-domain'))
     ip = Utils.getRealIP()
     request = Utils.getCommonRequest()
     request.set_domain('alidns.aliyuncs.com')
