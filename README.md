@@ -5,8 +5,6 @@
 > 利用Python和阿里云云解析API实现。可利用于家庭环境，向公网映射NAS，DB，Web等应用
 ## Note
 > * 基于：Python 3 、阿里云Python SDK、阿里云云解析API、BeautifulSoup 4
-> * 你的阿里云的AccessKeyId和AccessKeySecret填充在`AcsClientSingleton.py`文件中
-> * 你的域名填充在`Utils.py`中，替换example.com
 > * 直接运行DDNS.py文件的main函数即可，其他的py文件的main函数都为测试
 > * 可将此脚本设置为系统定时任务，例如每天凌晨4:30执行一次或者每次联网时自动执行一次
 > * 此脚本为DDNS实现的个人想法
@@ -39,3 +37,4 @@
 
 ## Version Log
 > * 2018/5/29 网络连通性检测，只有在有网时才进行操作，否则等待网络连接
+> * 2018/6/10 启用配置文件存储用户数据
