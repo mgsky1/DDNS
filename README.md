@@ -29,11 +29,11 @@
 ## ScreenShots
 
 注：因为我已经更新过了，所以它提示IP地址已存在，阿里云是不允许同一个IP重复更新的。第二张图为本地，第三张图为外网<br/>
-![](http://xxx.fishc.com/forum/201805/26/181341tp2frcnnnvnvc5iz.png)
+![](http://xxx.fishc.org/forum/201805/26/181341tp2frcnnnvnvc5iz.png)
 
-![](http://xxx.fishc.com/forum/201805/26/200124rsubrwwdblr8ffwz.png)
+![](http://xxx.fishc.org/forum/201805/26/200124rsubrwwdblr8ffwz.png)
 
-![](http://xxx.fishc.com/forum/201805/26/200228kb1u63hargn0pc1n.png)
+![](http://xxx.fishc.org/forum/201805/26/200228kb1u63hargn0pc1n.png)
 
 ## Version Log
 > * 2018/5/29 网络连通性检测，只有在有网时才进行操作，否则等待网络连接
