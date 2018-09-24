@@ -37,3 +37,5 @@ if __name__ == "__main__":
     except (ServerException,ClientException) as reason:
         print("失败！原因为")
         print(reason.get_error_msg())
+        print("可参考:https://help.aliyun.com/document_detail/29774.html?spm=a2c4g.11186623.2.20.fDjexq#%E9%94%99%E8%AF%AF%E7%A0%81")
+        print("或阿里云帮助文档")
