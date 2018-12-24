@@ -1,27 +1,20 @@
 '''
 获取用户真实IP地址
 Created By Martin Huang on 2018/5/19
+修改记录：
+2018/12/24 =》改进ip获取方式 取消BS4依赖 感谢@Nielamu的建议
 '''
 import urllib.request
-import re
-from bs4 import BeautifulSoup
+import json
 
-#从ip138爬取探测用户实际ip的网页
+#利用API获取含有用户ip的JSON数据
 def getIpPage():
-    url = "http://www.ip138.com/"
+    url = "https://api.ipify.org/?format=json"
     response = urllib.request.urlopen(url)
-    html = response.read().decode("gb2312")
-    soup = BeautifulSoup(html, "lxml")
-    _iframe = soup.body.iframe
-    return _iframe["src"]
+    html = response.read().decode('utf-8')
+    return html
 
-#解析网页，正则判断，获取用户实际公网ip
-def getRealIp(url):
-    response = urllib.request.urlopen(url)
-    html = response.read().decode("gb2312")
-    pattern = r"(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)"
-    matchs = re.search(pattern,html)
-    ip_addr = ""
-    for i in range(1,5):
-        ip_addr += matchs.group(i) + "."
-    return ip_addr[:-1]
+#解析数据，获得IP
+def getRealIp(data):
+    jsonData = json.loads(data)
+    return jsonData['ip']
