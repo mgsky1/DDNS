@@ -21,6 +21,12 @@ class Utils:
         ip = IpGetter.getRealIp(url)
         return ip
 
+    #获取真实公网IPv6
+    def getRealIPv6():
+        url = IpGetter.getIpPageV6();
+        ip = IpGetter.getRealIpV6(url)
+        return ip
+
     #获取二级域名的RecordId
     def getRecordId(domain):
         client = Utils.getAcsClient()
