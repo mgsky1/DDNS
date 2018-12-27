@@ -12,7 +12,7 @@ pip3 install aliyun-python-sdk-core
 
 ## Run
 ```bash
-python3 src/DDNS.py      #  认ipv4
+python3 src/DDNS.py      # 默认ipv4
 python3 src/DDNS.py -6   # 改用ipv6
 ```
 
