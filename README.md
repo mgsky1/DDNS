@@ -3,6 +3,20 @@
 ## Summary
 
 > 利用Python和阿里云云解析API实现。可利用于家庭环境，向公网映射NAS，DB，Web等应用
+
+## Install
+
+```bash
+pip3 install aliyun-python-sdk-core
+```
+
+## Run
+```bash
+python3 src/DDNS.py      # 默认ipv4
+python3 src/DDNS.py -6   # 改用ipv6
+```
+
+
 ## Note
 > * 基于：Python 3 、阿里云Python SDK、阿里云云解析API
 > * 直接运行DDNS.py文件的main函数即可，其他的py文件的main函数都为测试

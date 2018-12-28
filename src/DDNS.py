@@ -12,28 +12,41 @@ from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.acs_exception.exceptions import ClientException
 from Utils import Utils
 import time
+import argparse
 
-def DDNS():
+def DDNS(use_v6):
     client = Utils.getAcsClient()
     recordId = Utils.getRecordId(Utils.getConfigJson().get('Second-level-domain'))
-    ip = Utils.getRealIP()
+    if use_v6:
+        ip = Utils.getRealIPv6()
+        type = 'AAAA'
+    else:
+        ip = Utils.getRealIP()
+        type = 'A'
+    print({'type': type, 'ip':ip})
+
     request = Utils.getCommonRequest()
     request.set_domain('alidns.aliyuncs.com')
     request.set_version('2015-01-09')
     request.set_action_name('UpdateDomainRecord')
     request.add_query_param('RecordId', recordId)
     request.add_query_param('RR', Utils.getConfigJson().get('Second-level-domain'))
-    request.add_query_param('Type', 'A')
+    request.add_query_param('Type', type)
     request.add_query_param('Value', ip)
     response = client.do_action_with_exception(request)
     return response
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='DDNS')
+    parser.add_argument('-6', '--ipv6', nargs='*', default=False)
+    args = parser.parse_args()
+    isipv6 = isinstance(args.ipv6, list)
+
     try:
         while not Utils.isOnline():
             time.sleep(3)
             continue
-        result = DDNS()
+        result = DDNS(isipv6)
         print("成功！")
     except (ServerException,ClientException) as reason:
         print("失败！原因为")
