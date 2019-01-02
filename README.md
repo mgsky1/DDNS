@@ -1,4 +1,4 @@
-# DDNS dev
+# DDNS
 
 ## Summary
 

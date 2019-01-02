@@ -7,6 +7,7 @@ Created By Martin Huang on 2018/5/20
 2018/5/29 => 增加网络连通性检测，只有联通时才进行操作，否则等待
 2018/6/10 => 使用配置文件存储配置，避免代码内部修改(需要注意Python模块相互引用问题)
 2018/9/24 => 修改失败提示信息
+2018/12/27 =》增加参数-6，用于更新ipv6的记录 感谢@Li Kaiwei
 '''
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.acs_exception.exceptions import ClientException
