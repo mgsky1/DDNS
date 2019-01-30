@@ -11,6 +11,16 @@ Created By Martin Huang on 2018/5/19
 
 import requests
 import json
+import logging
+import sys
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.INFO)
+# StreamHandler
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setLevel(level=logging.DEBUG)
+logger.addHandler(stream_handler)
 
 
 from aliyunsdkcore.acs_exception.exceptions import ServerException
@@ -79,7 +89,7 @@ class Utils:
 
         recordIds = Utils.getRecordId(client, request, config.get('first-level-domain'), config.get('second-level-domain'))
 
-        print('recordIds', recordIds)
+        logger.info('recordIds %s', recordIds)
         for secondDomain, recordId in recordIds.items():
             try:
                 request.set_domain('alidns.aliyuncs.com')
@@ -90,9 +100,9 @@ class Utils:
                 request.add_query_param('Type', 'A')
                 request.add_query_param('Value', ip)
                 response = client.do_action_with_exception(request)
-                print("success", response)
+                logger.info("success %s", response)
             except (ServerException, ClientException) as reason:
-                print("fail", reason.get_error_msg())
+                logger.warn("fail %s", reason.get_error_msg())
                 response = False
         return response
 
