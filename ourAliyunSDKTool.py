@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+
 '''
 @desc:AcsClient的单实例类
 @author: Martin Huang
-@time: created on 2018/5/26 18:50
-@修改记录:
-2018/6/10 =》 AccessKeyId 和 AccessKeySecret从配置文件中读取
 '''
 
 from aliyunsdkcore.client import AcsClient
@@ -23,8 +24,7 @@ class AcsClientSing:
 
 
 '''
-获取阿里云Common Request请求类
-单实例
+获取阿里云Common Request请求类单实例
 Created By Martin Huang on 2018/5/26
 '''
 from aliyunsdkcore.request import CommonRequest

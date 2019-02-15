@@ -26,18 +26,20 @@ configJSON = 'config.json'
 
 def checkAndUpdateDomain():
     newIp = Utils.getRealIp()
-    logger.info('newIp %s', newIp)
 
     if not os.path.exists(ipHistoryJson):
         Utils.setJson(ipHistoryJson, {"ip":newIp})
 
     oldData = Utils.getJson(ipHistoryJson)
     if oldData['ip'] != newIp:
-        logger.info('need uppdate from %s to %s '%(oldData['ip'], newIp))
+        logger.info('need update from %s to %s '%(oldData['ip'], newIp))
         result = Utils.DDNS(configJSON, newIp)
         if result:
             oldData['ip'] = newIp
             Utils.setJson(ipHistoryJson, oldData)
+    else:
+        logger.info('no need update ip.')
+
 
 
 logger.info('starting1...')
@@ -52,8 +54,7 @@ if __name__ == "__main__":
         checkAndUpdateDomain()
     else:
         logger.info('task scheduled.')
-
-        schedule.every(5).minutes.do(checkAndUpdateDomain)
+        schedule.every(1).minutes.do(checkAndUpdateDomain)
 
         while True:
             schedule.run_pending()

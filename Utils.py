@@ -1,12 +1,5 @@
-'''
-工具类
-Created By Martin Huang on 2018/5/19
-修改记录：
-2018/5/16 =》删除不需要的方法
-2018/5/29 =》增加获取操作系统平台方法，增加网络连通性检测(后续考虑重构)
-2018/6/3 =》网络连通性代码重构
-2018/6/10 =》增加配置文件读取方法(可能有IO性能影响，考虑重构)
-'''
+#!/usr/bin/env python3
+# encoding: utf-8
 
 
 import requests
@@ -40,9 +33,9 @@ class Utils:
     @staticmethod
     def getRealIp():
         try:
-            s = requests.get('https://api.ipify.org/?format=json')
+            s = requests.get('https://ident.me/.json')
             info = json.loads(s.content.decode(encoding="utf-8"))
-            ip = info["ip"]
+            ip = info["address"]
         except Exception as e:
             ip = None
         return ip
@@ -89,7 +82,7 @@ class Utils:
 
         recordIds = Utils.getRecordId(client, request, config.get('first-level-domain'), config.get('second-level-domain'))
 
-        logger.info('recordIds %s', recordIds)
+        logger.info('recordIds: %s'%recordIds)
         for secondDomain, recordId in recordIds.items():
             try:
                 request.set_domain('alidns.aliyuncs.com')
@@ -100,9 +93,9 @@ class Utils:
                 request.add_query_param('Type', 'A')
                 request.add_query_param('Value', ip)
                 response = client.do_action_with_exception(request)
-                logger.info("success %s", response)
+                logger.info("success %s"%response)
             except (ServerException, ClientException) as reason:
-                logger.warn("fail %s", reason.get_error_msg())
+                logger.warn("fail %s"%reason.get_error_msg())
                 response = False
         return response
 
