@@ -20,7 +20,7 @@ from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.acs_exception.exceptions import ClientException
 
 
-from ourAliyunSDKTool import AcsClientSing, CommonRequestSing
+from aliyunSDKTools import AcsClientSing, CommonRequestSing
 
 
 class Utils:
