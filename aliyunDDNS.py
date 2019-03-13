@@ -20,8 +20,8 @@ stream_handler.setLevel(level=logging.DEBUG)
 logger.addHandler(stream_handler)
 
 
-ipHistoryJson = 'ipHistory.json'
-configJSON = 'config.json'
+ipHistoryJson = os.path.join(os.path.dirname(__file__), 'ipHistory.json')
+configJSON = os.path.join(os.path.dirname(__file__), 'config.json')
 
 
 def checkAndUpdateDomain():
