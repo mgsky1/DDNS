@@ -22,7 +22,7 @@ python3 src/DDNS.py -6   # 改用ipv6
 > * 直接运行DDNS.py文件的main函数即可，其他的py文件的main函数都为测试
 > * 可将此脚本设置为系统定时任务，例如每天凌晨4:30执行一次或者每次联网时自动执行一次
 > * 此脚本为DDNS实现的个人想法
-> * **最新的测试版本已经解除了对BS4的依赖，欢迎切换dev分支体验测试**
+> * 支持多个二级域名映射
 ## Restrict
 > 本脚本适用于家庭宽带IP为动态IP的情形，若不是，可以利用[frp](https://github.com/fatedier/frp)等NAT-DDNS内网穿透工具
 ## Configuration
