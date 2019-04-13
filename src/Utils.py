@@ -29,8 +29,8 @@ class Utils:
         ip = IpGetter.getRealIpV6(url)
         return ip
 
-    #获取二级域名的RecordId
-    def getRecordIds(domains):
+    #获取二级域名的RecordId与其所对应域名所组成的字典
+    def getRecordIdAndDomainsDict(domains):
         client = Utils.getAcsClient()
         request = Utils.getCommonRequest()
         request.set_domain('alidns.aliyuncs.com')
@@ -40,12 +40,15 @@ class Utils:
         response = client.do_action_with_exception(request)
         jsonObj = json.loads(response.decode("UTF-8"))
         records = jsonObj["DomainRecords"]["Record"]
-        recordIds = []
+        drList = []
+        #先构成二元组(id,domain)，然后组成列表，最后转换字典
         for each in records:
             for eachDomain in domains:
                 if each["RR"] == eachDomain:
-                    recordIds.append(each["RecordId"])
-        return recordIds
+                    tmpTupel = (each["RR"],each["RecordId"])
+                    drList.append(tmpTupel)
+        drDict = dict(drList)
+        return drDict
 
     #获取CommonRequest
     def getCommonRequest():

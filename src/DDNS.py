@@ -19,12 +19,8 @@ import argparse
 def DDNS(use_v6):
     client = Utils.getAcsClient()
     domains = Utils.getConfigJson().get('Second-level-domain').split(',');
-    recordIds = Utils.getRecordIds(domains)
-    '''
-    将域名与RecordId组成字典，排列顺序依照配置文件中所定义的，如果
-    配置文件中的域名不存在，则不会出现在字典中
-    '''
-    drDict = dict(zip(domains,recordIds))
+    drDict = Utils.getRecordIdAndDomainsDict(domains)
+    print(drDict)
     if use_v6:
         ip = Utils.getRealIPv6()
         type = 'AAAA'
@@ -32,8 +28,6 @@ def DDNS(use_v6):
         ip = Utils.getRealIP()
         type = 'A'
     print({'type': type, 'ip':ip})
-    print(drDict)
-
     if not drDict:
        raise AttributeError("失败！域名字典为空！请检查配置文件")
 
