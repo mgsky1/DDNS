@@ -32,7 +32,7 @@ python3 src/DDNS.py -6   # 改用ipv6
     "AccessKeyId": "Your_AccessKeyId",//你的阿里云AccessKeyId
     "AccessKeySecret": "Your_AccessKeySecret",//你的阿里云AccessKeySecret
     "First-level-domain": "Your_First-level-domain",//一级域名，例如 example.com
-    "Second-level-domain": "Your_Second-level-domain"//二级域名，例如 ddns.example.com 填入ddns即可
+    "Second-level-domain": "Your_Second-level-domain"//二级域名，例如 ddns.example.com 填入ddns即可。若有多个，中间使用逗号分割，例如"ddns,test"
 }
 ```
 ## Tip
@@ -56,6 +56,7 @@ python3 src/DDNS.py -6   # 改用ipv6
 > * 2018/9/24 修改失败提示输出，添加阿里帮助网址，让用户可查询错误对应信息
 > * 2018/12/24 改进ip获取方式，删除BS4依赖，感谢@Nielamu
 > * 2018/12/27 增加ipv6支持，感谢@chnlkw
+> * 2019/4/13 增加多个二级域名映射功能，感谢@感谢@lsl061085
 
 ## Contribution
 如果感兴趣欢迎fork项目，如果有任何问题欢迎在issue区提问~

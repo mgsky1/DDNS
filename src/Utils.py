@@ -7,6 +7,7 @@ Created By Martin Huang on 2018/5/19
 2018/6/3 =》网络连通性代码重构
 2018/6/10 =》增加配置文件读取方法(可能有IO性能影响，考虑重构)
 2018/12/27 =》增加参数-6，用于更新ipv6的记录 感谢@Li Kaiwei
+2019/4/13 =》 修改getRecordIds方法，使其返回列表而不是单个值 感谢感谢@lsl061085的建议
 '''
 import IpGetter
 import platform
@@ -29,7 +30,7 @@ class Utils:
         return ip
 
     #获取二级域名的RecordId
-    def getRecordId(domain):
+    def getRecordIds(domains):
         client = Utils.getAcsClient()
         request = Utils.getCommonRequest()
         request.set_domain('alidns.aliyuncs.com')
@@ -39,9 +40,12 @@ class Utils:
         response = client.do_action_with_exception(request)
         jsonObj = json.loads(response.decode("UTF-8"))
         records = jsonObj["DomainRecords"]["Record"]
+        recordIds = []
         for each in records:
-            if each["RR"] == domain:
-                return each["RecordId"]
+            for eachDomain in domains:
+                if each["RR"] == eachDomain:
+                    recordIds.append(each["RecordId"])
+        return recordIds
 
     #获取CommonRequest
     def getCommonRequest():
