@@ -21,6 +21,7 @@ python3 src/DDNS.py -6   # 改用ipv6
 > * 基于：Python 3 、阿里云Python SDK、阿里云云解析API
 > * 直接运行DDNS.py文件的main函数即可，其他的py文件的main函数都为测试
 > * 可将此脚本设置为系统定时任务，例如每天凌晨4:30执行一次或者每次联网时自动执行一次
+> * *在最新的[dev](https://github.com/mgsky1/DDNS/tree/dev)分支中增加了同一IP同时绑定多个域名的功能，欢迎体验*
 > * 此脚本为DDNS实现的个人想法
 
 ## Restrict
