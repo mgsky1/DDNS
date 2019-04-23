@@ -18,7 +18,7 @@ Set your configuration in `config.json` and put the file in root path of the pro
 
 ## Get started
 
-### Ubuntu
+### Linux
 
 run `crontab -e`, then add `*/5 * * * * python3 aliyunDDNS.py now`, save it.
 if necessary, run `/etc/init.d/cron restart`.
