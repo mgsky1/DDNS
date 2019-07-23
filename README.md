@@ -39,7 +39,7 @@ The config.json has some infomation you should provide. The config structure may
 > * Step 4: Use the IP you fond by google and the port to access your local web service. If ok, congratulations！
 
 ## ScreenShots
-NOTE: Because I have updated before, the script tells me the IP address has been exist. Aliyun does not allow users to update the same IP when the IP has not been changed. The second picture shows the local service. The Third one shows accessing local service over internet under the help of DDNS.
+NOTE: Because I have updated before, the script tells me the DNS record has already exists. Aliyun does not allow users to update the same IP when the IP has not been changed. The second picture shows the local service. The Third one shows accessing local service over internet under the help of DDNS.
 
 ![](http://xxx.fishc.org/forum/201805/26/181341tp2frcnnnvnvc5iz.png)
 
