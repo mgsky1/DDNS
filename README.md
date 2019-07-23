@@ -40,6 +40,7 @@ The config.json has some infomation you should provide. The config structure may
 
 ## ScreenShots
 NOTE: Because I have updated before, the script tells me the IP address has been exist. Aliyun does not allow users to update the same IP when the IP has not been changed. The second picture shows the local service. The Third one shows accessing local service over internet under the help of DDNS.
+
 ![](http://xxx.fishc.org/forum/201805/26/181341tp2frcnnnvnvc5iz.png)
 
 ![](http://xxx.fishc.org/forum/201805/26/200124rsubrwwdblr8ffwz.png)
