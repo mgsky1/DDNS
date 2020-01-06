@@ -24,7 +24,7 @@ def getRealIp(data):
 
 # 利用API获取含有用户ip的JSON数据
 def getIpPageV6():
-    url = "https://v6.ident.me/.json"
+    url = "https://ident.me/.json"
     response = urllib.request.urlopen(url)
     html = response.read().decode('utf-8')
     return html
