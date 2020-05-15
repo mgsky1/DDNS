@@ -4,7 +4,7 @@
 > Python and Aliyun SDK API have been used in this project. You can use this tool to map the local applications like NAS, DB, WEB etc to the internet.
 ## Install
 ```bash
-pip3 install aliyun-python-sdk-core
+pip3 install aliyun-python-sdk-core-v3
 ```
 ## Run
 ```bash
@@ -16,6 +16,7 @@ python3 src/DDNS.py -6   # change to ipv6
 > * To begin, you can run the main function in DDNS.py. The main function in other .py files are for the test purpose.
 > * You can set this script as a timer task in your opening system. For example, running this script at 4:30am everyday or when connecting to the internet.
 > * On the [dev](https://github.com/mgsky1/DDNS/tree/dev) branch, this project supports binding multiple domains to the same ip address.
+> * If you use iPv4, please make sure that the record type of your domain which will be used is **A**. If you use iPv6, the type is **AAAA**. 
 > * This script is my idea for implementing DDNS.
 
 ## Restrict
