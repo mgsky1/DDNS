@@ -52,8 +52,9 @@ NOTE: Because I have updated before, the script tells me the DNS record has alre
 > * 2018/5/29 Add detecting internet access.
 > * 2018/6/10 Start using configuration file.
 > * 2018/9/24 Improve the error output
-> * 2018/12/24 Improve the way to get IP, deleteing BS4 dependence. Thanks @Nielamu.
-> * 2018/12/27 Support ipv6. Thanks @chnlkw.
+> * 2018/12/24 Improve the way to get IP, deleteing BS4 dependence. Thanks [@Nielamu](https://github.com/NieLamu).
+> * 2018/12/27 Support ipv6. Thanks [@chnlkw](https://github.com/chnlkw).
+> * 2020/05/05 Improve the policy of getting ipv4 address. Once failed, it will write into the log and retry with new method after 10 sec. Thanks [@sunsheho](https://github.com/sunsheho).
 
 ## Contribution
 If you interest in this project and want to improve it, welcome to fork the project. Have any questions? you can ask in issue~
