@@ -6,7 +6,7 @@ Created By Martin Huang on 2018/5/19
 2018/5/29 =》增加获取操作系统平台方法，增加网络连通性检测(后续考虑重构)
 2018/6/3 =》网络连通性代码重构
 2018/6/10 =》增加配置文件读取方法(可能有IO性能影响，考虑重构)
-2022/2/09 => 修复 config.json 相对路径问题，便于crontab使用. by Deedive
+2022/2/09 => 修复 config.json 相对路径问题，便于crontab使用. by DeeDive
 '''
 import os
 import IpGetter
