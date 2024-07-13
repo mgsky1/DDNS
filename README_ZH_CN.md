@@ -9,13 +9,15 @@
 ## Install
 
 ```bash
-pip3 install aliyun-python-sdk-core-v3
+pip3 install aliyun-python-sdk-core
 ```
+aliyun-python-sdk-core==2.15.1  2024/07/13测试通过
 
 ## Run
 ```bash
-python3 src/DDNS.py      # 默认ipv4
-python3 src/DDNS.py -6   # 改用ipv6
+cd src
+python3 DDNS.py      # 默认ipv4
+python3 DDNS.py -6   # 改用ipv6
 ```
 
 
@@ -36,7 +38,7 @@ python3 src/DDNS.py -6   # 改用ipv6
     "AccessKeyId": "Your_AccessKeyId",//你的阿里云AccessKeyId
     "AccessKeySecret": "Your_AccessKeySecret",//你的阿里云AccessKeySecret
     "First-level-domain": "Your_First-level-domain",//一级域名，例如 example.com
-    "Second-level-domain": "Your_Second-level-domain"//二级域名，例如 ddns.example.com 填入ddns即可
+    "Second-level-domain": "Your_Second-level-domain"//二级域名，例如 ddns.example.com 填入ddns即可，也可使用@表示直接解析主域名
 }
 ```
 ## Tip
@@ -61,6 +63,7 @@ python3 src/DDNS.py -6   # 改用ipv6
 > * 2018/12/24 改进ip获取方式，删除BS4依赖，感谢[@Nielamu](https://github.com/NieLamu)
 > * 2018/12/27 增加ipv6支持，感谢[@chnlkw](https://github.com/chnlkw)
 > * 2020/05/05 修改ipv4地址获取方式。如果失败，会写入日志，并在10秒后采用新的方式重试。感谢[@sunsheho](https://github.com/sunsheho)
+> * 2024/07/13 添加使用ifconfig获取ipv6地址的方式，能够应对同一设备拥有多个公网ipv6地址的情况
 
 ## Contribution
 如果感兴趣欢迎fork项目，如果有任何问题欢迎在issue区提问~

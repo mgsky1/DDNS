@@ -1,47 +1,57 @@
 # DDNS
-[中文](https://github.com/mgsky1/DDNS/blob/master/README_ZH_CN.md)|[English](https://github.com/mgsky1/DDNS/blob/master/README.md)
+
+[中文](https://github.com/mgsky1/DDNS/blob/master/README_ZH_CN.md) | [English](https://github.com/mgsky1/DDNS/blob/master/README.md)
+
 ## Summary
-> Python and Aliyun SDK API have been used in this project. You can use this tool to map the local applications like NAS, DB, WEB etc to the internet.
+
+> Implemented using Python and Alibaba Cloud DNS API. Can be used in a home environment to map NAS, DB, Web, and other applications to the public network.
+
 ## Install
+
 ```bash
-pip3 install aliyun-python-sdk-core-v3
+pip3 install aliyun-python-sdk-core
 ```
+Tested with aliyun-python-sdk-core==2.15.1 on 2024/07/13.
+
 ## Run
 ```bash
-python3 src/DDNS.py      # default ipv4
-python3 src/DDNS.py -6   # change to ipv6
+cd src
+python3 DDNS.py      # Default to ipv4
+python3 DDNS.py -6   # Switch to ipv6
 ```
+
 ## Note
-> * Based on Python3、Aliyun API.
-> * To begin, you can run the main function in DDNS.py. The main function in other .py files are for the test purpose.
-> * You can set this script as a timer task in your opening system. For example, running this script at 4:30am everyday or when connecting to the internet.
-> * On the [dev](https://github.com/mgsky1/DDNS/tree/dev) branch, this project supports binding multiple domains to the same ip address.
-> * If you use iPv4, please make sure that the record type of your domain which will be used is **A**. If you use iPv6, the type is **AAAA**. 
-> * This script is my idea for implementing DDNS.
+> * Based on: Python 3, Alibaba Cloud Python SDK, Alibaba Cloud DNS API
+> * Directly run the main function of the DDNS.py file. The main functions of other .py files are for testing purposes.
+> * You can set this script as a system scheduled task, for example, to execute once at 4:30 AM every day or to run automatically each time you connect to the internet.
+> * The latest [dev](https://github.com/mgsky1/DDNS/tree/dev) branch adds the feature of binding multiple domain names to the same IP address. Feel free to try it out.
+> * If you use an IPv4 address, make sure the record type of the domain is set to **A**. If you use an IPv6 address, set it to **AAAA**.
+> * This script is a personal implementation of DDNS.
 
 ## Restrict
-> This script is suitable for the broadband which has a dynamic IP. If not, you can try NAT-DDNS tools like [frp](https://github.com/fatedier/frp).
+> This script is suitable for home broadband with dynamic IP. If not, you can use NAT-DDNS tools like [frp](https://github.com/fatedier/frp) for intranet penetration.
 
 ## Configuration
-The config.json has some infomation you should provide. The config structure may like this: 
+This project has been modified to store user configurations using a configuration file. The configuration file is in JSON format and is stored in config.json, as shown below:
 ```
 {
-    "AccessKeyId": "Your_AccessKeyId",//Your Aliyun AccessKeyId
-    "AccessKeySecret": "Your_AccessKeySecret",//Your Aliyun AccessKeySecret
-    "First-level-domain": "Your_First-level-domain",//First level domain, eg example.com
-    "Second-level-domain": "Your_Second-level-domain"//Second level domain, eg ddns.example.com Just input ddns
+    "AccessKeyId": "Your_AccessKeyId", // Your Alibaba Cloud AccessKeyId
+    "AccessKeySecret": "Your_AccessKeySecret", // Your Alibaba Cloud AccessKeySecret
+    "First-level-domain": "Your_First-level-domain", // First-level domain, e.g., example.com
+    "Second-level-domain": "Your_Second-level-domain" // Second-level domain, e.g., ddns.example.com, just enter ddns, or use @ to directly resolve the primary domain
 }
 ```
+
 ## Tip
-> How to determine wether your broadband service has a dynamic IP.
-> * Step 1：Find your WAN IP by google or other tools.
-> * Step 2：Run a web service locally. For example, starting IIS in Windows or Apache in Linux and using their default webpage.
-> * Step 3: Set the map rules in your home router. The ports which you will use to access the local service over internet had better not to be 80 beacuse the 80 port may be blocked by your internet service provider.
-> * Step 4: Use the IP you fond by google and the port to access your local web service. If ok, congratulations！
+> How to determine if your broadband has a dynamic IP:
+> * Step 1: Search for your IP on Baidu to find your IP address.
+> * Step 2: Start a local website, for example, start IIS on Windows or install Apache or Nginx on Linux and start it with their default page.
+> * Step 3: Set up port forwarding rules on the router. It is best not to use port 80 for public IP network access as it may be blocked by the ISP.
+> * Step 4: Finally, use the public IP + port number found earlier to access and see if you can display the intranet page. If so, congratulations!
 
 ## ScreenShots
-NOTE: Because I have updated before, the script tells me the DNS record has already exists. Aliyun does not allow users to update the same IP when the IP has not been changed. The second picture shows the local service. The Third one shows accessing local service over internet under the help of DDNS.
 
+Note: Since I have already updated, it prompts that the IP address already exists. Alibaba Cloud does not allow the same IP to be updated repeatedly. The second image is local, and the third image is external network.<br/>
 ![](http://xxx.fishc.org/forum/201805/26/181341tp2frcnnnvnvc5iz.png)
 
 ![](http://xxx.fishc.org/forum/201805/26/200124rsubrwwdblr8ffwz.png)
@@ -49,12 +59,13 @@ NOTE: Because I have updated before, the script tells me the DNS record has alre
 ![](http://xxx.fishc.org/forum/201805/26/200228kb1u63hargn0pc1n.png)
 
 ## Change Log
-> * 2018/5/29 Add detecting internet access.
-> * 2018/6/10 Start using configuration file.
-> * 2018/9/24 Improve the error output
-> * 2018/12/24 Improve the way to get IP, deleteing BS4 dependence. Thanks [@Nielamu](https://github.com/NieLamu).
-> * 2018/12/27 Support ipv6. Thanks [@chnlkw](https://github.com/chnlkw).
-> * 2020/05/05 Improve the policy of getting ipv4 address. Once failed, it will write into the log and retry with new method after 10 sec. Thanks [@sunsheho](https://github.com/sunsheho).
+> * 2018/5/29 Network connectivity check, only operate when there is a network, otherwise wait for network connection.
+> * 2018/6/10 Use configuration file to store user data.
+> * 2018/9/24 Modify failure prompt output, add Alibaba help URL for users to check corresponding error information.
+> * 2018/12/24 Improve IP acquisition method, remove BS4 dependency, thanks to [@Nielamu](https://github.com/NieLamu).
+> * 2018/12/27 Add IPv6 support, thanks to [@chnlkw](https://github.com/chnlkw).
+> * 2020/05/05 Modify IPv4 address acquisition method. If it fails, it will be logged and retried in 10 seconds using a new method. Thanks to [@sunsheho](https://github.com/sunsheho).
+> * 2024/07/13 Add a method to get IPv6 address using ifconfig to handle the situation where the same device has multiple public IPv6 addresses.
 
 ## Contribution
-If you interest in this project and want to improve it, welcome to fork the project. Have any questions? you can ask in issue~
+Feel free to fork the project if interested, and if you have any questions, feel free to ask in the issue section~
